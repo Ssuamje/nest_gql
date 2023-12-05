@@ -15,3 +15,16 @@ type User {
 type Query {
   findAll: [User!]!
 }
+
+type Mutation {
+  createUser(input: UserInputType!): User!
+}
+
+input UserInputType {
+  email: String!
+  displayName: String!
+  photoURL: String
+  intro: String
+  password1: String!
+  password2: String!
+}
