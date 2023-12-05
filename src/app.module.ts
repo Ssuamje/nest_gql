@@ -22,7 +22,7 @@ import { MongooseModule } from '@nestjs/mongoose';
       //   outputAs: 'class',
       // },
     }),
-    MongooseModule.forRoot('mongodb://admin:관리자비밀번호@localhost:27017/nest?authSource=admin'),
+    MongooseModule.forRoot('mongodb://admin:1234@localhost:27017/nest?authSource=admin'),
     UserModule,
   ],
   controllers: [AppController],

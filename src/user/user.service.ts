@@ -1,4 +1,4 @@
-import { Inject, Injectable } from "@nestjs/common";
+import { Injectable } from "@nestjs/common";
 import { Model } from "mongoose";
 import { User, UserInputType } from "./user.schema";
 import { InjectModel } from "@nestjs/mongoose";
@@ -20,14 +20,18 @@ export class UserService {
 
     async createUser(user: UserInputType) {
         try {
-            const data = {...user, createdAt: new Date().toISOString()};
+            const data = {
+                ...user, 
+                created_at: new Date(),
+            };
             const newUser = await this.userModel.create(data);
+            
             return {
                 uid: newUser._id,
                 ...data
             };
         } catch (error) {
-            
+
         }
     }
 }

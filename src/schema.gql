@@ -2,29 +2,37 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
 # ------------------------------------------------------
 
-type User {
-  uid: ID!
-  email: String!
-  displayName: String!
-  photoURL: String
-  intro: String
-  date_crated: String
-  access_token: String
+type UserType {
+  nickname: Nickname!
+  oauth_type: OauthType!
+  created_at: DateTime!
 }
 
+"""Oauth Type"""
+enum OauthType {
+  KAKAO
+  GOOGLE
+  NAVER
+  FORTY_TWO
+}
+
+"""
+A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format.
+"""
+scalar DateTime
+
+"""Nickname custom scalar type"""
+scalar Nickname
+
 type Query {
-  findAll: [User!]!
+  findAll: [UserType!]!
 }
 
 type Mutation {
-  createUser(input: UserInputType!): User!
+  createUser(input: UserInputType!): UserType!
 }
 
 input UserInputType {
-  email: String!
-  displayName: String!
-  photoURL: String
-  intro: String
-  password1: String!
-  password2: String!
+  nickname: Nickname!
+  oauth_type: OauthType!
 }
