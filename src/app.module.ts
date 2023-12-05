@@ -4,7 +4,6 @@ import { AppService } from './app.service';
 import { GraphQLModule } from '@nestjs/graphql';
 import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
 import { join } from 'node:path/posix';
-import { TypeOrmModule } from '@nestjs/typeorm';
 import { UserModule } from './schemas/user.module';
 
 @Module({

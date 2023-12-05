@@ -1,4 +1,17 @@
 import { ArgsType, Field, ID, InputType, ObjectType } from "@nestjs/graphql";
+import mongoose from "mongoose";
+
+/* mongoose에 따른 UserSchema 추가 */
+export const UserSchema = new mongoose.Schema({
+    _id: { type: mongoose.Schema.Types.ObjectId, auto: true },
+    displayName: String,
+    email: String,
+    photoUrl: String,
+    passowrd: String,
+    intro: String,
+    created_at: String,
+});
+
 
 @ObjectType()
 export class User {

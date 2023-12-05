@@ -1,16 +1,26 @@
-import { Query, Resolver } from "@nestjs/graphql";
-import { User } from "./user.schema";
+import { Args, Mutation, Query, Resolver } from "@nestjs/graphql";
+import { User, UserInputType } from "./user.schema";
+import { UserService } from "./user.service";
 
 @Resolver()
 export class UsersResolver {
-    constructor() {}
+    constructor(private readonly userService: UserService) {}
 
     @Query(() => [User])
     async findAll() {
-        return [
-            {uid:"1", email:"apple@test.com", displayName:"돌아온애쁠"},
-            {uid:"2", email:"banan@test.com", displayName:"바나나반하나"}
-          ]
-        // catch문 필요. ApolloError를 위한 apollo-express 라이브러리가 필요한가?
+        try {
+            return this.userService.findAll();
+        } catch (error) {
+            
+        }
+    }
+
+    @Mutation(() => User)
+    async createUser(@Args("input") user: UserInputType) {
+        try {
+            return await this.userService.createUser(user);
+        } catch (error) {
+            
+        }
     }
 }
