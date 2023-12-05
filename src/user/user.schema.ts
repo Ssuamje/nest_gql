@@ -8,7 +8,6 @@ export type UserDocument = HydratedDocument<User>;
 
 @Schema() // MongoDB Collection에서 사용할 스키마 - Users가 된다.
 export class User {
-
   @Prop()
   nickname: Nickname;
 
@@ -22,9 +21,11 @@ export const UserSchema = SchemaFactory.createForClass(User);
 
 @ObjectType()
 export class UserType {
+  @Field((type) => ID)
+  _id: string;
 
   @Field((type) => Nickname)
-  nickname: string;
+  nickname: Nickname;
 
   @Field(type => OauthType)
   oauth_type: OauthType;

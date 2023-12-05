@@ -3,6 +3,7 @@
 # ------------------------------------------------------
 
 type UserType {
+  _id: ID!
   nickname: Nickname!
   oauth_type: OauthType!
   created_at: DateTime!
