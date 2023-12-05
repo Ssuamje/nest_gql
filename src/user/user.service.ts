@@ -2,6 +2,7 @@ import { Injectable } from "@nestjs/common";
 import { Model } from "mongoose";
 import { User, UserInputType } from "./user.schema";
 import { InjectModel } from "@nestjs/mongoose";
+import { ApolloError } from "apollo-server-express";
 
 @Injectable()
 export class UserService {
@@ -24,6 +25,7 @@ export class UserService {
                 ...user, 
                 created_at: new Date(),
             };
+
             const newUser = await this.userModel.create(data);
             
             return {
@@ -31,7 +33,7 @@ export class UserService {
                 ...data
             };
         } catch (error) {
-
+            new ApolloError(error.message);
         }
     }
 }
