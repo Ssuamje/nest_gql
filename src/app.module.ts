@@ -3,8 +3,9 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { GraphQLModule } from '@nestjs/graphql';
 import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
-import { ExampleModule } from './example/example.module';
 import { join } from 'node:path/posix';
+import { TypeOrmModule } from '@nestjs/typeorm';
+import { UserModule } from './schemas/user.module';
 
 @Module({
   imports: [
@@ -21,7 +22,7 @@ import { join } from 'node:path/posix';
       //   outputAs: 'class',
       // },
     }),
-    ExampleModule,
+    UserModule,
   ],
   controllers: [AppController],
   providers: [AppService],
