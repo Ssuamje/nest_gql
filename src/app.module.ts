@@ -4,7 +4,8 @@ import { AppService } from './app.service';
 import { GraphQLModule } from '@nestjs/graphql';
 import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
 import { join } from 'node:path/posix';
-import { UserModule } from './schemas/user.module';
+import { UserModule } from './user/user.module';
+import { MongooseModule } from '@nestjs/mongoose';
 
 @Module({
   imports: [
@@ -21,6 +22,7 @@ import { UserModule } from './schemas/user.module';
       //   outputAs: 'class',
       // },
     }),
+    MongooseModule.forRoot('mongodb://localhost/nest'),
     UserModule,
   ],
   controllers: [AppController],
