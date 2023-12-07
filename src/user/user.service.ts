@@ -2,7 +2,6 @@ import { Injectable, NotFoundException, UseFilters } from "@nestjs/common";
 import { Model } from "mongoose";
 import { User, UserInputType } from "./domain/user.schema";
 import { InjectModel } from "@nestjs/mongoose";
-import { HttpExceptionFilter } from "src/filter/http-exception.filter";
 
 @Injectable()
 export class UserService {
