@@ -6,6 +6,7 @@ import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
 import { join } from 'node:path/posix';
 import { UserModule } from './user/user.module';
 import { MongooseModule } from '@nestjs/mongoose';
+import { NoteModule } from './note/note.module';
 
 @Module({
   imports: [
@@ -24,6 +25,7 @@ import { MongooseModule } from '@nestjs/mongoose';
     }),
     MongooseModule.forRoot('mongodb://admin:1234@localhost:27017/nest?authSource=admin'),
     UserModule,
+    NoteModule,
   ],
   controllers: [AppController],
   providers: [AppService],

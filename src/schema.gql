@@ -4,12 +4,12 @@
 
 type UserType {
   _id: ID!
-  nickname: Nickname!
+  nickname: NicknameScalar!
   oauth_type: OauthType!
   created_at: DateTime!
 }
 
-"""Oauth Type"""
+"""유저의 OAuth2 로그인 타입 열거 타입"""
 enum OauthType {
   KAKAO
   GOOGLE
@@ -22,18 +22,33 @@ A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date
 """
 scalar DateTime
 
-"""Nickname custom scalar type"""
-scalar Nickname
+type NoteType {
+  _id: ID!
+  title: String!
+  content: String!
+  author: UserType!
+}
+
+"""닉네임에 대한 스칼라"""
+scalar NicknameScalar
 
 type Query {
-  findAll: [UserType!]!
+  findAllUsers: [UserType!]!
+  findAllNotes: [NoteType!]!
 }
 
 type Mutation {
   createUser(input: UserInputType!): UserType!
+  createNote(input: NoteInputType!): NoteType!
 }
 
 input UserInputType {
-  nickname: Nickname!
+  nickname: NicknameScalar!
   oauth_type: OauthType!
+}
+
+input NoteInputType {
+  title: String!
+  content: String!
+  author_id: ID!
 }

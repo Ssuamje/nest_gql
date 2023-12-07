@@ -1,19 +1,19 @@
 import { CustomScalar, Scalar } from "@nestjs/graphql";
-import { NicknameType } from "./nickname.type";
+import { Nickname } from "./nickname";
 
-@Scalar("Nickname", (type) => Nickname)
-export class Nickname implements CustomScalar<string, NicknameType> {
-    description = "Nickname custom scalar type";
+@Scalar("NicknameScalar", (type) => NicknameScalar)
+export class NicknameScalar implements CustomScalar<string, Nickname> {
+    description = "닉네임에 대한 스칼라";
 
-    parseValue(value: string): NicknameType {
-        return new NicknameType(value);
+    parseValue(value: string): Nickname {
+        return new Nickname(value);
     }
 
-    serialize(nickname: NicknameType): string {
+    serialize(nickname: Nickname): string {
         return nickname.value;
     }
 
-    parseLiteral(ast): NicknameType {
-        return new NicknameType(ast.value);
+    parseLiteral(ast): Nickname {
+        return new Nickname(ast.value);
     }
 }

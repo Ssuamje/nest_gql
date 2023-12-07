@@ -1,5 +1,5 @@
 import { Args, Mutation, Query, Resolver } from "@nestjs/graphql";
-import { User, UserInputType, UserType } from "./user.schema";
+import { UserInputType, UserType } from "./domain/user.schema";
 import { UserService } from "./user.service";
 
 @Resolver()
@@ -7,9 +7,9 @@ export class UsersResolver {
     constructor(private readonly userService: UserService) {}
 
     @Query(() => [UserType])
-    async findAll() {
+    async findAllUsers() {
         try {
-            return this.userService.findAll();
+            return this.userService.findAllUsers();
         } catch (error) {
             
         }

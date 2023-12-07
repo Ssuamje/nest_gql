@@ -1,4 +1,4 @@
-export class NicknameType {
+export class Nickname {
     public readonly value: string;
 
     constructor(value: string) {

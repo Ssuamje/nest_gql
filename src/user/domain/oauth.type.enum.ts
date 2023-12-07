@@ -9,5 +9,5 @@ export enum OauthType {
 
 registerEnumType(OauthType, {
     name: 'OauthType',
-    description: 'Oauth Type',
+    description: '유저의 OAuth2 로그인 타입 열거 타입',
 });

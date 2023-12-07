@@ -1,8 +1,9 @@
 import { ArgsType, Field, ID, InputType, ObjectType } from "@nestjs/graphql";
 import { Prop, Schema, SchemaFactory } from "@nestjs/mongoose";
 import { HydratedDocument } from "mongoose";
-import { OauthType } from "./domain/oauth.type.enum";
-import { Nickname } from "./domain/nickname.scalar";
+import { OauthType } from "./oauth.type.enum";
+import { NicknameScalar } from "./nickname.scalar";
+import { Nickname } from "./nickname";
 
 export type UserDocument = HydratedDocument<User>;
 
@@ -24,7 +25,7 @@ export class UserType {
   @Field((type) => ID)
   _id: string;
 
-  @Field((type) => Nickname)
+  @Field((type) => NicknameScalar)
   nickname: Nickname;
 
   @Field(type => OauthType)
@@ -37,7 +38,7 @@ export class UserType {
 @ArgsType()
 @InputType()
 export class UserInputType {
-  @Field(type => Nickname)
+  @Field(type => NicknameScalar)
   nickname: Nickname;
 
   @Field(type => OauthType)
