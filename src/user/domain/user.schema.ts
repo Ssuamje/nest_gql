@@ -19,6 +19,7 @@ export class User {
   created_at: Date;
 }
 export const UserSchema = SchemaFactory.createForClass(User);
+UserSchema.index({ nickname: 1, oauth_type: 1 }, { unique: true });
 
 @ObjectType()
 export class UserType {

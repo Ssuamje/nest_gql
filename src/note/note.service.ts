@@ -56,7 +56,7 @@ export class NoteService {
                 author: foundUser,
             };
         } catch (error) {
-            
+            console.log(error);
         }
     }
 }

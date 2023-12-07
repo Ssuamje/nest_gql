@@ -3,6 +3,7 @@ import { Model } from "mongoose";
 import { User, UserInputType } from "./domain/user.schema";
 import { InjectModel } from "@nestjs/mongoose";
 import { ApolloError } from "apollo-server-express";
+import { MongoError, MongoServerError } from "typeorm";
 
 @Injectable()
 export class UserService {
@@ -44,7 +45,9 @@ export class UserService {
                 ...data
             };
         } catch (error) {
-            new ApolloError(error.message);
-        }
+            if (error.name === "MongoServerError") {
+                new ApolloError(error.message, "MONGO_SERVER_ERROR");
+            }
+        } 
     }
 }
