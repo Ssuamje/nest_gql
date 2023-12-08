@@ -13,7 +13,6 @@ import { NicknameScalar } from "./domain/nickname.scalar";
     providers: [UsersResolver, UserService,
         NicknameScalar,
     ],
-    exports: [UserService,
-    ],
+    exports: [UserService],
 })
 export class UserModule {}

@@ -5,6 +5,7 @@
 type UserType {
   _id: ID!
   nickname: NicknameScalar!
+  oauth_id: String!
   oauth_type: OauthType!
   created_at: DateTime!
 }
@@ -44,7 +45,9 @@ type Mutation {
 
 input UserInputType {
   nickname: NicknameScalar!
+  oauth_id: String!
   oauth_type: OauthType!
+  password: String!
 }
 
 input NoteInputType {

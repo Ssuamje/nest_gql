@@ -13,7 +13,13 @@ export class User {
   nickname: Nickname;
 
   @Prop()
+  oauth_id: string;
+
+  @Prop()
   oauth_type: OauthType;
+
+  @Prop()
+  password: string;
 
   @Prop()
   created_at: Date;
@@ -29,6 +35,9 @@ export class UserType {
   @Field((type) => NicknameScalar)
   nickname: Nickname;
 
+  @Field()
+  oauth_id: string;
+
   @Field(type => OauthType)
   oauth_type: OauthType;
 
@@ -42,6 +51,12 @@ export class UserInputType {
   @Field(type => NicknameScalar)
   nickname: Nickname;
 
+  @Field()
+  oauth_id: string;
+
   @Field(type => OauthType)
   oauth_type: OauthType;
+
+  @Field()
+  password: string;
 }

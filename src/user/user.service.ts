@@ -26,13 +26,23 @@ export class UserService {
         }
     }
 
+    async findByOauthTypeAndId(oauth_type: string, oauth_id: string): Promise<User> {
+        try {
+            return this.userModel.findOne({oauth_type, oauth_id}).exec();
+        } catch (error) {
+            
+        }
+    }
+
     async createUser(userInput: UserInputType) {
         try {
-            const {nickname, oauth_type} = userInput;
+            const {nickname, oauth_id, oauth_type, password} = userInput;
             
             const data = {
                 nickname,
+                oauth_id,
                 oauth_type,
+                password,
                 created_at: new Date(),
             };
 
