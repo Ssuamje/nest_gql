@@ -11,11 +11,11 @@ import { GoogleStrategy } from './google.strategy';
   controllers: [AuthController],
   imports: [MongooseModule.forFeature([
       { name: User.name, schema: UserSchema }]),
-      UserModule,
       JwtModule.register({
-          secret: "THIS-IS-SECRET-KEY",
-          signOptions: { expiresIn: '300s' },
+        secret: "THIS-IS-SECRET-KEY",
+        signOptions: { expiresIn: '300s' },
       }),
+      UserModule,
   ],
   providers: [UserService, GoogleStrategy],
   exports: [],
